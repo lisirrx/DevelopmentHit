@@ -51,7 +51,6 @@
 </template>
 
 <script>
-import Hello from './components/Hello';
   export default {
     data () {
       return {
@@ -76,7 +75,6 @@ import Hello from './components/Hello';
 
   
     components:{
-      Hello
     }
   }
 </script>

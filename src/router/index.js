@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Hello from '@/components/Hello'
 import Github from '@/components/github'
 import Resource from 'vue-resource'
 import Zhihu from '@/components/zhihu'

@@ -4,11 +4,9 @@ import Vue from 'vue'
 import Vuetify from 'vuetify'
 import './stylus/main.styl'
 import Github from './components/github'
-import Hello from './components/Hello'
 import App from './App'
 import router from './router'
 import Vuex from 'vuex'
-import store from './store/store'
 
 
 Vue.use(Vuetify)
@@ -18,8 +16,6 @@ Vue.config.productionTip = false
 new Vue({
   el: '#app',
   router,
-  store,
-  
   template: '<App/>',
   components: { App}
 })
