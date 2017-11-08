@@ -8,21 +8,17 @@
           <v-flex xs12 v-for="(item,i) in items" :key="i">
             <v-card ripple color="white" class="black--text" >
               <v-container fluid grid-list-lg @click="onclick(item)">
-                  <v-layout row>
-                  <v-flex xs12 md9 lg9 xl9>
+                  <v-layout row align-center>
+                    
+                    <v-flex xs10 md10 lg10 xl10>
                     <div>
+                      
                       <div class="body-1">{{item.title}}</div>
                       <div class="user pt-1 pb-2">{{item.user}}</div>
-                      <div class="upvotes">赞同 · {{item.upvotes}}</div>
+                      <div class="content" v-html="item.content.substring(0,200)">...</div>
                     </div>
                   </v-flex>
-                  <v-flex xs0 md3 lg3 l3>
-                      <v-layout align-center wrap>
-                          <span style="font-size:16px;">{{item.star}}</span>
-                      </v-layout>
-                      <v-layout pt-4>
-                      </v-layout>
-                  </v-flex>
+                
                   </v-layout>
                   </v-container>
             </v-card>
@@ -43,9 +39,10 @@
     font-weight:bold;
 
 }
-.upvotes{
-    font-size: 10px;
+.content{
+    font-size: 12px;
     color: gray;
+    overflow: scroll;
 }
 
 </style>
@@ -68,23 +65,20 @@ export default {
   },
 
   created(){
-        this.$http.get('/zhihu').then(response => {
- 
+        
+        this.$http.get('/v2ex').then(response => {
+        console.log('v2ex');
+        console.log(response.body);
     // get body data 
         let data = response.body;
-        let parser = new DOMParser();
-        let dom = parser.parseFromString(data, 'text/xml');
-        let questions = dom.getElementsByTagName('question');
-
-        for(let question of questions){
+        for(let topic of data){
             let item = {};
         
-            item.title = question.children[0].innerHTML;
-            item.url = question.children[1].innerHTML;
-            item.upvotes = question.children[2].innerHTML;
-            item.commentCount = question.children[3].innerHTML;
-            item.answerUrl = question.children[4].innerHTML;
-            item.user = question.children[5].children[0].innerHTML;
+            item.title = topic.title;
+            item.url = topic.url;
+            item.content = topic.content_rendered;
+            item.avatar = 'http:' + topic.member.avatar_normal;
+
             this.items.push(item);
         }
         }, response => {});

@@ -11,7 +11,7 @@
                   <v-layout row>
                   <v-flex xs9>
                     <div>
-                      <div class="title blue--text">{{item.name}}</div>
+                      <div class="title">{{item.name}}</div>
                       <div class="grey--text pt-1 pb-2">Owner : {{item.owner}}</div>
                       <div class="pt-1">{{item.descriptions}}</div>
                     </div>
@@ -34,14 +34,8 @@
 </template>
 
 <style>
-.card-hover:hover{
-    color: grey;
-
-}
-
-.card-hover:active{
-        color: grey;
-
+.title{
+    color: #259;
 }
 
 </style>

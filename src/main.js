@@ -14,7 +14,6 @@ import store from './store/store'
 Vue.use(Vuetify)
 Vue.use(Vuex)
 Vue.config.productionTip = false
-Vue.prototype.HOST = '/github'
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

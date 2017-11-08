@@ -43,6 +43,22 @@ module.exports = {
         pathRewrite: {
         '^/zhihu': '/topic'
         }
+      },
+      '/v2ex': {
+        target: 'https://www.v2ex.com',
+        changeOrigin: true,
+        secure: false,
+        pathRewrite: {
+        '^/v2ex': '//api/topics/hot.json'
+        }
+      },
+      '/gankio': {
+        target: 'http://gank.io',
+        changeOrigin: true,
+        secure: false,
+        pathRewrite: {
+        '^/gankio': '//api/random/data/all/25'
+        }
       }
   }
 
